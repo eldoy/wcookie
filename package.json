@@ -1,7 +1,7 @@
 {
-  "name": "wstore",
+  "name": "wcookie",
   "version": "0.1.0",
-  "description": "Isomorphic store implementation based on cookies",
+  "description": "Browser and server cookie implementation",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
