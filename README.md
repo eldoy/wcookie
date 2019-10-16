@@ -7,7 +7,9 @@ npm i wstore
 ```
 
 ### Usage
-In the browser include the script found in `lib/server`, on the server require it.
+In the browser include the script found in `lib/browser.js`. On the server you require the `node` version.
+
+Check out `server.js` in the source code for a running server example.
 ```javascript
 // Get cookie in the browser
 const name = cookie('name')
