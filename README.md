@@ -38,7 +38,9 @@ http.createServer(function (req, res) {
   req.cookie('name', '', -1)
 
   // Set response cookie headers
-  res.setHeader('set-cookie', req.cookieJar.headers)
+  if (req.cookieJar.length) {
+    res.setHeader('set-cookie', req.cookieJar.headers)
+  }
 
 }).listen(8124)
 ```

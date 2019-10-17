@@ -65,4 +65,12 @@ describe('node', () => {
     expect(headers[0]).toMatch('name=hello;')
     expect(headers[1]).toMatch('title=project;')
   })
+
+  it('should contain the cookie jar length', async () => {
+    const req = init('status=strong; run=long'); cookies(req)
+    expect(req.cookieJar.length).toBe(2)
+    req.cookie('name', 'hello')
+    req.cookie('title', 'project')
+    expect(req.cookieJar.length).toBe(4)
+  })
 })
