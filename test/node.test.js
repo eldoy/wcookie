@@ -73,4 +73,9 @@ describe('node', () => {
     req.cookie('title', 'project')
     expect(req.cookieJar.length).toBe(4)
   })
+
+  it('should return null if not found', async () => {
+    const req = init(''); cookies(req)
+    expect(req.cookie('hello')).toBeNull()
+  })
 })
