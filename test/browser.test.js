@@ -1,6 +1,6 @@
 const cookie = require('../lib/browser.js')
 
-describe('cookie', () => {
+describe('browser', () => {
   beforeEach(() => {
     cookie('name', '', -1)
   })

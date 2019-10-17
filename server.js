@@ -1,20 +1,21 @@
 const http = require('http')
 const PORT = 8124
 
-const store = require('./lib/node.js')
+const cookies = require('./lib/node.js')
 
 const server = http.createServer(function (req, res) {
-  req.store = store(req)
+  // This is received from the browser
   console.log(req.headers.cookie)
-  const $ = { cookie: req.store.cookie }
-  let name = $.cookie('name')
-  console.log({ name })
-  req.store.cookie('name', 'server')
-  let name2 = $.cookie('name')
-  console.log({ name2 })
-  $.cookie('man', 'no')
-  $.cookie('new', 'this')
-  res.setHeader('set-cookie', req.store.cookies)
+
+  // Set a cookie
+  req.cookie('hello', 'cookie')
+
+  // Send cookie headers back to browser if any
+  const cookieHeaders = req.cookieJar.headers
+  if (cookieHeaders.length) {
+    res.setHeader('set-cookie', cookieHeaders)
+  }
+
   res.setHeader('content-type', 'text/html')
   res.end('Done.')
 })

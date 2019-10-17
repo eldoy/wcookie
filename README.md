@@ -22,23 +22,24 @@ cookie('name', '', -1)
 
 // On the server
 const http = require('http')
-const { node } = require('wbuild')
+const cookie = require('wcookie').node
 
 http.createServer(function (req, res) {
-  // Enable the cookie store
-  req.store = node(req)
+  // Enable cookies
+  cookie(req)
 
   // Get cookie
-  const name = req.store.cookie('name')
+  const name = req.cookie('name')
 
   // Set cookie
-  req.store.cookie('name', 'hello')
+  req.cookie('name', 'hello')
 
   // Delete cookie
-  req.store.cookie('name', '', -1)
+  req.cookie('name', '', -1)
 
-  // Write cookies
-  res.setHeader('set-cookie', req.store.cookies)
+  // Set response cookie headers
+  res.setHeader('set-cookie', req.cookieJar.headers)
+
 }).listen(8124)
 ```
 MIT licensed. Enjoy!
