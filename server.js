@@ -1,7 +1,7 @@
 const http = require('http')
 const PORT = 8124
 
-const cookie = require('./lib/node.js')
+const cookie = require('./index.js')
 
 const server = http.createServer(function (req, res) {
   // This is received from the browser

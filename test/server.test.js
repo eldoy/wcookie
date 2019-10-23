@@ -1,9 +1,9 @@
-const cookies = require('../lib/node.js')
+const cookies = require('../index.js')
 function init (cookie) {
   return { headers: { cookie } }
 }
 
-describe('node', () => {
+describe('server', () => {
   it('should set up request object', async () => {
     const req = init(''); cookies(req)
     expect(typeof req.cookie).toBe('function')
