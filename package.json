@@ -1,6 +1,6 @@
 {
   "name": "wcookie",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Server cookie implementation for Node.js",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "Vidar Eldøy <vidar@eldoy.com>",
   "license": "MIT",
   "devDependencies": {
-    "axios": "^0.19.0",
-    "jest": "^24.9.0"
+    "axios": "^0.20.0",
+    "jest": "^26.4.2"
   }
 }

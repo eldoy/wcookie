@@ -35,7 +35,7 @@ describe('server', () => {
     const req = init(''); cookies(req)
     req.cookie('name', 'hello')
     expect(req.cookie('name')).toBe('hello')
-    req.cookie('name', '', -1)
+    req.cookie('name', null)
     expect(req.cookie('name')).toBe(null)
   })
 

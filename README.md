@@ -24,7 +24,7 @@ http.createServer(function (req, res) {
   req.cookie('name', 'hello')
 
   // Delete cookie
-  req.cookie('name', '', -1)
+  req.cookie('name', null)
 
   // Set response cookie headers
   if (req.cookieJar.length) {

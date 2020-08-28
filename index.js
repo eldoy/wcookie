@@ -20,20 +20,24 @@ module.exports = function(req) {
     }
   }
 
-  req.cookie = function(key, value, time) {
+  req.cookie = function(key, value, opt = {}) {
     if (typeof value === 'undefined') {
       const c = req.cookieJar.values[key]
       return !c || c.deleted ? null : c.value
-    } else {
-      var date = new Date
-      date.setTime(date.getTime() + 864e5 * (time || 30))
-      req.cookieJar.values[key] = {
-        key,
-        value,
-        path: '/',
-        expires: date.toUTCString(),
-        deleted: time < 0
-      }
+    }
+    var days = opt.days || 30
+    if (value === null) {
+      value = ''
+      days = -1
+    }
+    var date = new Date
+    date.setTime(date.getTime() + 864e5 * days)
+    req.cookieJar.values[key] = {
+      key,
+      value,
+      path: '/',
+      expires: date.toUTCString(),
+      deleted: days < 0
     }
   }
 
