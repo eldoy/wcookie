@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
-    "start": "nodemon server.js"
+    "serve": "nodemon server.js"
   },
   "keywords": [],
   "author": "Vidar Eldøy <vidar@eldoy.com>",
   "license": "MIT",
   "devDependencies": {
-    "axios": "^0.20.0",
-    "jest": "^26.4.2"
+    "axios": "^0.21.1",
+    "jest": "^26.6.3"
   }
 }
