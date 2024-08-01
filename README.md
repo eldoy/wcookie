@@ -2,23 +2,23 @@
 Server cookie handling for Node.js.
 
 ### Install
-```bash
+```
 npm i wscookie
 ```
 
 ### Usage
 Check out `server.js` in the source code for a running server example.
-```javascript
+```js
 // Server setup
-const http = require('http')
-const cookie = require('wcookie')
+var http = require('http')
+var cookie = require('wcookie')
 
 http.createServer(function (req, res) {
   // Enable cookies
   cookie(req)
 
   // Get cookie
-  const name = req.cookie('name')
+  var name = req.cookie('name')
 
   // Set cookie
   req.cookie('name', 'hello')
@@ -34,3 +34,5 @@ http.createServer(function (req, res) {
 }).listen(8124)
 ```
 ISC licensed. Enjoy!
+
+Created by [Eldøy Projects](https://eldoy.com)
