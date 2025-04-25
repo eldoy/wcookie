@@ -9,18 +9,13 @@ module.exports = function (req) {
       for (var entry in this.values) {
         var data = this.values[entry]
         if (!data.initial) {
-          result.push(
-            data.key +
-              '=' +
-              encodeURIComponent(data.value) +
-              ';' +
-              'path=' +
-              data.path +
-              ';' +
-              'expires=' +
-              data.expires +
-              ';'
-          )
+          var value = [
+            data.key + '=' + encodeURIComponent(data.value),
+            'path=' + data.path,
+            'expires=' + data.expires,
+            data.httpOnly ? 'HttpOnly' : ''
+          ].join('; ')
+          result.push(value)
         }
       }
       return result
@@ -44,7 +39,8 @@ module.exports = function (req) {
       value,
       path: '/',
       expires: date.toUTCString(),
-      deleted: days < 0
+      deleted: days < 0,
+      httpOnly: !!opt.httpOnly
     }
   }
 
