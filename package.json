@@ -1,6 +1,6 @@
 {
   "name": "wcookie",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Server cookie implementation for Node.js",
   "main": "index.js",
   "scripts": {
