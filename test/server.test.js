@@ -89,7 +89,7 @@ describe('server', () => {
     expect(req.cookie('hello')).toBeNull()
   })
 
-  it('should support httpOnly option', async () => {
+  it('should support HttpOnly option', async () => {
     const req = init('')
     cookies(req)
     req.cookie('name', 'hello', { httpOnly: true })
@@ -99,5 +99,29 @@ describe('server', () => {
 
     const headers = req.cookieJar.headers
     expect(headers[0]).toMatch('HttpOnly')
+  })
+
+  it('should support SameSite option', async () => {
+    const req = init('')
+    cookies(req)
+    req.cookie('name', 'hello', { sameSite: 'Lax' })
+
+    var jar = req.cookieJar
+    expect(req.cookieJar.values.name.sameSite).toBe('Lax')
+
+    const headers = req.cookieJar.headers
+    expect(headers[0]).toMatch('SameSite=Lax')
+  })
+
+  it('should support Secure option', async () => {
+    const req = init('')
+    cookies(req)
+    req.cookie('name', 'hello', { secure: true })
+
+    var jar = req.cookieJar
+    expect(req.cookieJar.values.name.secure).toBe(true)
+
+    const headers = req.cookieJar.headers
+    expect(headers[0]).toMatch('Secure')
   })
 })

@@ -13,7 +13,9 @@ module.exports = function (req) {
             data.key + '=' + encodeURIComponent(data.value),
             'path=' + data.path,
             'expires=' + data.expires,
-            data.httpOnly ? 'HttpOnly' : ''
+            data.httpOnly ? 'HttpOnly' : '',
+            data.sameSite ? `SameSite=${data.sameSite}` : '',
+            data.secure ? 'Secure' : ''
           ].join('; ')
           result.push(value)
         }
@@ -40,7 +42,9 @@ module.exports = function (req) {
       path: '/',
       expires: date.toUTCString(),
       deleted: days < 0,
-      httpOnly: !!opt.httpOnly
+      httpOnly: !!opt.httpOnly,
+      sameSite: opt.sameSite || '',
+      secure: !!opt.secure
     }
   }
 
